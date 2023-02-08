@@ -1,0 +1,83 @@
+paths:
+  main_dir: "main_dir"
+  experiment_name: "run_1"
+global:
+  seed: 1
+dataset:
+  to_compress:
+    word_embeddings: false
+    all_keys: true
+    all_queries: false
+    all_values: false
+    all_attention_outputs: false
+    all_output_denses: false
+    all_intermediate_denses: false
+  lm_dataset:
+    wiki_text_103_url: "https://s3.amazonaws.com/research.metamind.io/wikitext/wikitext-103-raw-v1.zip"
+    text_download_folder: "LM_data"
+    LM_text_dataset_path: "LM_data/wikitext-103-raw/wiki.test.raw"
+    text_frequency_dataset_path: "LM_data/wikitext-103-raw/wiki.train.raw"
+    model_name: "bert-base-uncased"
+modules_training_setting: 'concatenated' # separated, concatenated
+model:
+  type: 'ae' # 'svd', 'ae', 'kronecker', 'tucker', 'pruning'
+  cr: 10 # works for AE, SVD and pruning. It specifies the desired compression ratio
+  ae:
+    encoder_type: 'non_linear' # types 'linear', 'non_linear'
+    decoder_type: 'non_linear'
+    symmetric_ae_scale: true # if false then absolute encoder sizes will be taken
+    enforce_norm: true
+    dec_layer_sizes: [2, 4] # relative sizes
+    enc_layer_sizes: [8, 4]
+  kronecker:
+    r: 50 # the matrix (n x m) will be represented by two matrices (sqrt(nm) x r)
+  tucker:
+    rank: # the ranks passed to tucker for decomposition
+      word_embeddings: [40, 700, 700]
+      key: [10, 200, 200]
+      query: [10, 200, 200]
+      value: [10, 200, 200]
+  latent_dim:
+    key: 1
+    value: 1
+    query: 1
+    token_emb: 1
+    attention_output: 1
+    intermediate_dense: 1
+    output_dense: 1
+  weights_path: null
+  svd_model_init:
+    enabled: false
+    svd_iters: 29
+training:
+  drone_batch_size: 16
+  drone_loss_coeff: 0.6
+  batch_size: 16 # -1 means we take all data as one batch
+  lr: 0.001
+  step_lr_scheduler:
+    step_size: 10
+    gamma: 0.8
+  epochs: 20
+  additional_epochs: 10
+  early_stopping_metric: 'perplexity'
+  loss:
+    cos_dist:
+      coeff: 0.9091
+    l2_norm:
+      coeff: 0.0909
+    l1_norm:
+      coeff: 0.0
+      start_alpha: 1.0
+      end_alpha: 0.1
+  svd_max_iters: 30
+coefficients:
+  type: null # null, 'fisher', 'l1_sens'
+  data_folder: 'LM_data/coefficients'
+  is_param_wise: false
+  norm: 'sum'
+  short_seq_thresh: 5
+  long_seq_thresh: 180
+  mask_ratio: 15
+  max_seq_length: 256
+  seed: 42
+

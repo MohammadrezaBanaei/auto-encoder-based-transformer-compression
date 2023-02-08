@@ -1,0 +1,26 @@
+{
+  "save_dir": "save_dir",
+  "run_name": "run_mrpc_ae",
+  "run_type": "ae",
+  "task_name": "mrpc",
+  "pre_trained_models_root": null,
+  "pre_trained_models_dir": ["main_dir/run_1"],
+  "svd_info": {
+    "svd_cr": 25,
+    "svd_iters": 5
+  },
+  "lm_dataset": {
+    "wiki_text_103_url": "https://s3.amazonaws.com/research.metamind.io/wikitext/wikitext-103-raw-v1.zip",
+    "text_download_folder": "LM_data",
+    "lm_text_dataset_path": "LM_data/wikitext-103-raw/wiki.test.raw",
+    "text_frequency_dataset_path": "LM_data/wikitext-103-raw/wiki.train.raw",
+    "model_name": "bert-base-uncased"
+  },
+  "seed": 22,
+  "epochs": 3,
+  "eval_steps": 10,
+  "train_frac": 1.0,
+  "save_model": true,
+  "save_strategy": "no",
+  "ae_random_reinit": false
+}

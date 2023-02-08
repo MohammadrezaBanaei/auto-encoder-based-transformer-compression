@@ -1,0 +1,8 @@
+# environment.yaml
+
+name: ae-compression-env
+dependencies:
+  - python=3.8
+  - pip
+  - pip:
+    - -r requirements.txt
