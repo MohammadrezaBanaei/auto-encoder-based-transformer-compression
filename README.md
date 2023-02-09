@@ -5,12 +5,13 @@
 Official PyTorch implementation of the paper: "Revisiting Offline Compression: Going Beyond Factorization-based Methods for Transformer Language Models" [to appear in EACL 2023], 
 Mohammadreza Banaei, Klaudia Bałazy, Artur Kasymov, Rémi Lebret, Jacek Tabor, and Karl Aberer
 
+Link to our paper: https://arxiv.org/abs/2302.04045
+
 ## Abstract
 Recent transformer language models achieve outstanding results in many natural language processing (NLP) tasks. However, their enormous size often makes them impractical on memory-constrained devices, requiring practitioners to compress them to smaller networks.
 In this paper, we explore offline compression methods, meaning computationally-cheap approaches that do not require further fine-tuning of the compressed model. 
 We challenge the classical matrix factorization methods by proposing a novel, better-performing autoencoder-based framework. We perform a comprehensive ablation study of our approach, examining its different aspects over a diverse set of evaluation settings. Moreover, we show that enabling collaboration between modules across layers by compressing certain modules together positively impacts the final model performance. 
 Experiments on various NLP tasks demonstrate that our approach significantly outperforms commonly used factorization-based offline compression methods.
-
 
 ## Requirements
 
@@ -83,3 +84,14 @@ Please update the paths, `task_name`, `run_type` and your intended hyper-paramet
 ## Reference
 
 If you found the provided code useful, please consider citing our work.
+
+```
+@article{banaeirevisitingofflinecompression,
+  doi = {10.48550/ARXIV.2302.04045},
+  url = {https://arxiv.org/abs/2302.04045},
+  author = {Banaei, Mohammadreza and Bałazy, Klaudia and Kasymov, Artur and Lebret, Rémi and Tabor, Jacek and Aberer, Karl},
+  title = {Revisiting Offline Compression: Going Beyond Factorization-based Methods for Transformer Language Models},
+  publisher = {arXiv},
+  year = {2023}
+}
+```
