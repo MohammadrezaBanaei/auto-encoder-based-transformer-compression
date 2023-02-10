@@ -1,11 +1,7 @@
-# Transformer offline compression  
-
 # Revisiting Offline Compression: Going Beyond Factorization-based Methods for Transformer Language Models
 
-Official PyTorch implementation of the paper: "Revisiting Offline Compression: Going Beyond Factorization-based Methods for Transformer Language Models" [to appear in EACL 2023], 
-Mohammadreza Banaei, Klaudia Bałazy, Artur Kasymov, Rémi Lebret, Jacek Tabor, and Karl Aberer
+Code for the paper: "[Revisiting Offline Compression: Going Beyond Factorization-based Methods for Transformer Language Models](https://arxiv.org/abs/2302.04045)" [to appear in EACL 2023]
 
-Link to our paper: https://arxiv.org/abs/2302.04045
 
 ## Abstract
 Recent transformer language models achieve outstanding results in many natural language processing (NLP) tasks. However, their enormous size often makes them impractical on memory-constrained devices, requiring practitioners to compress them to smaller networks.
